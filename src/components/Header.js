@@ -1,4 +1,5 @@
 import { ImUser } from 'react-icons/im';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
 const Header = () => (
@@ -8,10 +9,14 @@ const Header = () => (
       <nav className={styles.navbar}>
         <ul>
           <li>
-            books
+            <Link to="/">
+              books
+            </Link>
           </li>
           <li>
-            categories
+            <Link to="/categories">
+              categories
+            </Link>
           </li>
         </ul>
       </nav>
