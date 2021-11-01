@@ -1,6 +1,6 @@
 const CategoriesPage = () => (
   <div>
-    No categories
+    Under Construction
   </div>
 );
 
