@@ -34,3 +34,17 @@ code {
 ul {
   list-style-type: none;
 }
+
+ul li {
+  display: inline;
+}
+
+button {
+  border-radius: 0.2em;
+  border: none;
+  font-size: 1rem;
+  background-color: transparent;
+  color: rgb(91, 158, 245);
+  padding: 0.2em 0.8em;
+  cursor: pointer;
+}
