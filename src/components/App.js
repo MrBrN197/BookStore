@@ -1,5 +1,6 @@
 import Header from './Header';
 import Book from './Book';
+import AddBook from './AddBook';
 
 const App = () => {
   const books = [
@@ -39,6 +40,7 @@ const App = () => {
           />
         ))}
       </div>
+      <AddBook />
     </>
   );
 };
