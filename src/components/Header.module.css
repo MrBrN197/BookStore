@@ -1,0 +1,50 @@
+
+.header {
+  display: flex;
+  color: rgb(91, 158, 245);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  height: 6rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 4rem;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  text-transform: uppercase;
+}
+
+.heading h1 {
+  display: block;
+  display: inline;
+}
+
+.navbar ul {
+  display: flex;
+  color: #121212;
+}
+
+.navbar li {
+  padding-inline: 0.8rem;
+  font-size: 0.813rem;
+  font-family: Montserrat, sans-serif;
+}
+
+.user {
+  border-radius: 100vh;
+  height: 2.8rem;
+  width: 2.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  box-shadow: 0 0 0 1px rgb(91, 158, 245, 0.3);
+  transition: box-shadow 120ms;
+  cursor: pointer;
+}
+
+.user:hover {
+  box-shadow: 0 0 0 2px rgb(91, 158, 245, 0.3);
+}
