@@ -1,7 +1,7 @@
 import Book from './Book';
 import AddBook from './AddBook';
 
-const Books = () => {
+const BooksPage = () => {
   const books = [
     {
       title: 'The Hunger Games',
@@ -43,4 +43,4 @@ const Books = () => {
   );
 };
 
-export default Books;
+export default BooksPage;

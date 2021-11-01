@@ -1,17 +1,17 @@
 import { Route, Switch } from 'react-router-dom';
 import Header from './Header';
-import Books from './Books';
-import Categories from './Categories';
+import BooksPage from './BooksPage';
+import CategoriesPage from './CategoriesPage';
 
 const App = () => (
   <>
     <Header />
     <Switch>
       <Route exact path="/">
-        <Books />
+        <BooksPage />
       </Route>
       <Route>
-        <Categories />
+        <CategoriesPage />
       </Route>
     </Switch>
   </>
