@@ -42,7 +42,7 @@ export default (state = initialState, action) => {
       ];
 
     case REMOVE_BOOK:
-      return state;
+      return state.filter((book) => book.id !== action.payload);
     default:
       return state;
   }
