@@ -9,21 +9,21 @@ const initialState = [
     author: 'Suzanne Collins',
     genre: 'Action',
     completed: 64,
-    id: 0,
+    id: uuidv4(),
   },
   {
     title: 'Dune',
     author: 'Frank Herbert',
     genre: 'Science Fiction',
     completed: 8,
-    id: 1,
+    id: uuidv4(),
   },
   {
     title: 'Capital in the Twenty-First Century',
     author: 'Suzanne Collins',
     genre: 'Economy',
     completed: 0,
-    id: 2,
+    id: uuidv4(),
   },
 ];
 
