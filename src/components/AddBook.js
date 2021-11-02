@@ -7,7 +7,7 @@ const AddBook = () => {
   const [genre, setGenre] = useState('');
   const dispatch = useDispatch();
 
-  const addBookToStore = (e) => {
+  const submitBookToStore = (e) => {
     e.preventDefault();
     if (!title || !genre) return;
     dispatch(addBook({
@@ -23,7 +23,7 @@ const AddBook = () => {
   return (
     <div>
       <h2>ADD NEW BOOK</h2>
-      <form onSubmit={addBookToStore}>
+      <form onSubmit={submitBookToStore}>
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
