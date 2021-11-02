@@ -28,9 +28,9 @@ const initialState = [
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
-      return [];
+      return state;
     case REMOVE_BOOK:
-      return [];
+      return state;
     default:
       return state;
   }
