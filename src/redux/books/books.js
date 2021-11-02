@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
 
@@ -28,7 +30,17 @@ const initialState = [
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
-      return state;
+      return [
+        ...state,
+        {
+          id: uuidv4(),
+          title: action.payload.title,
+          author: action.payload.author,
+          completed: 0,
+          genre: action.payload.genre,
+        },
+      ];
+
     case REMOVE_BOOK:
       return state;
     default:

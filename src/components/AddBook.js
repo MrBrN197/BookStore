@@ -7,15 +7,13 @@ const AddBook = () => {
   const [genre, setGenre] = useState('');
   const dispatch = useDispatch();
 
-  const createBook = (e) => {
+  const addBookToStore = (e) => {
     e.preventDefault();
     if (!title || !genre) return;
     dispatch(addBook({
       title,
       author: 'Unknown',
-      completed: 0,
       genre,
-      id: 10,
     }));
 
     setTitle('');
@@ -25,7 +23,7 @@ const AddBook = () => {
   return (
     <div>
       <h2>ADD NEW BOOK</h2>
-      <form onSubmit={createBook}>
+      <form onSubmit={addBookToStore}>
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -38,9 +36,9 @@ const AddBook = () => {
           onChange={(e) => setGenre(e.target.value)}
         >
           <option hidden value="">-- Category --</option>
-          <option value="action">Action</option>
-          <option value="science-fiction">Science Fiction</option>
-          <option value="economy">Economy</option>
+          <option value="Action">Action</option>
+          <option value="Science Fiction">Science Fiction</option>
+          <option value="Economy">Economy</option>
         </select>
         <input type="submit" value="ADD BOOK" />
       </form>
