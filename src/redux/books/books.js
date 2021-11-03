@@ -1,4 +1,4 @@
-import { getAllBooks } from '../../api/api';
+import { fetchAllBooks, postBook } from '../../api/api';
 
 const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
@@ -25,7 +25,12 @@ export default (state = [], action) => {
   }
 };
 
-export const addBook = (payload) => (dispatch) => {
+export const addBook = (payload) => async (dispatch) => {
+  await postBook({
+    itemId: payload.id,
+    title: payload.title,
+    category: payload.genre,
+  });
   dispatch({
     type: ADD_BOOK,
     payload,
@@ -38,7 +43,7 @@ export const removeBook = (payload) => (dispatch) => dispatch({
 });
 
 export const setAllBooks = () => async (dispatch) => {
-  const books = await getAllBooks();
+  const books = await fetchAllBooks();
   // convert api data to array of objects
   const data = Object.entries(books).map(([itemId, [book]]) => ({
     id: itemId,
