@@ -11,9 +11,9 @@ export const fetchAllBooks = async () => {
   return data;
 };
 
-export const postBook = async ({ itemId, title, category }) => {
+export const createBook = async ({ itemId, title, category }) => {
   const url = `${BASE_URL}/apps/${APP_ID}/books`;
-  const data = JSON.stringify({
+  const body = JSON.stringify({
     item_id: itemId,
     title,
     category,
@@ -23,7 +23,22 @@ export const postBook = async ({ itemId, title, category }) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: data,
+    body,
+  });
+  return resp.text();
+};
+
+export const deleteBook = async (itemId) => {
+  const url = `${BASE_URL}/apps/${APP_ID}/books/${itemId}`;
+  const body = JSON.stringify({
+    item_id: itemId,
+  });
+  const resp = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body,
   });
   return resp.text();
 };

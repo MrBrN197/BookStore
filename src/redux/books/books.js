@@ -1,4 +1,4 @@
-import { fetchAllBooks, postBook } from '../../api/api';
+import { fetchAllBooks, createBook, deleteBook } from '../../api/api';
 
 const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
@@ -26,7 +26,7 @@ export default (state = [], action) => {
 };
 
 export const addBook = (payload) => async (dispatch) => {
-  await postBook({
+  await createBook({
     itemId: payload.id,
     title: payload.title,
     category: payload.genre,
@@ -37,10 +37,13 @@ export const addBook = (payload) => async (dispatch) => {
   });
 };
 
-export const removeBook = (payload) => (dispatch) => dispatch({
-  type: REMOVE_BOOK,
-  payload,
-});
+export const removeBook = (payload) => async (dispatch) => {
+  await deleteBook(payload);
+  dispatch({
+    type: REMOVE_BOOK,
+    payload,
+  });
+};
 
 export const setAllBooks = () => async (dispatch) => {
   const books = await fetchAllBooks();
