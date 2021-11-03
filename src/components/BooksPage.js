@@ -1,20 +1,35 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import Book from './Book';
 import AddBook from './AddBook';
+import { getAllBooks } from '../api/api';
 
 const BooksPage = () => {
-  const books = useSelector((state) => state.books);
+  // const books = useSelector((state) => state.books);
+  const [books, setBooks] = useState(null);
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      setBooks(await getAllBooks());
+    };
+    fetchBooks();
+  }, []);
+
+  if (!books) {
+    return <div>no Books</div>;
+  }
+
   return (
     <>
       <div>
-        {books.map((book) => (
+        {Object.entries(books).map(([itemId, [book]]) => (
           <Book
-            key={book.id}
-            id={book.id}
+            key={itemId}
+            id={itemId}
             title={book.title}
-            author={book.author}
-            genre={book.genre}
-            completed={book.completed}
+            author="Unknown"
+            genre={book.category}
+            completed={Math.floor(Math.random() * 100)}
           />
         ))}
       </div>
