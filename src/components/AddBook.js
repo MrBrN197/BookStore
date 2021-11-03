@@ -4,6 +4,17 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBook } from '../redux/books/books';
 
+const options = [
+  'Action',
+  'Science Fiction',
+  'Economy',
+  'Biography',
+  'Fantasy',
+  'Horror',
+  'Romance',
+  'History',
+].map((o, idx) => [o, idx]);
+
 const AddBook = () => {
   const [title, setTitle] = useState('');
   const [genre, setGenre] = useState('');
@@ -38,9 +49,9 @@ const AddBook = () => {
           onChange={(e) => setGenre(e.target.value)}
         >
           <option hidden value="">-- Category --</option>
-          <option value="Action">Action</option>
-          <option value="Science Fiction">Science Fiction</option>
-          <option value="Economy">Economy</option>
+          {options.map(([value, idx]) => (
+            <option key={idx} value={value}>{value}</option>
+          ))}
         </select>
         <input type="submit" value="ADD BOOK" />
       </form>
