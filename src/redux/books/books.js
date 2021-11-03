@@ -48,12 +48,12 @@ export default (state = initialState, action) => {
   }
 };
 
-export const addBook = (payload) => ({
+export const addBook = (payload) => (dispatch) => dispatch({
   type: ADD_BOOK,
   payload,
 });
 
-export const removeBook = (payload) => ({
+export const removeBook = (payload) => (dispatch) => dispatch({
   type: REMOVE_BOOK,
   payload,
 });
