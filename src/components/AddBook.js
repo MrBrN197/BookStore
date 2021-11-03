@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBook } from '../redux/books/books';
@@ -11,8 +13,8 @@ const AddBook = () => {
     e.preventDefault();
     if (!title || !genre) return;
     dispatch(addBook({
+      id: uuidv4(),
       title,
-      author: 'Unknown',
       genre,
     }));
 

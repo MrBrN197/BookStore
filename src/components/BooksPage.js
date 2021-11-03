@@ -1,19 +1,17 @@
-// import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import Book from './Book';
 import AddBook from './AddBook';
-import { getAllBooks } from '../api/api';
+import { setAllBooks } from '../redux/books/books';
 
 const BooksPage = () => {
-  // const books = useSelector((state) => state.books);
-  const [books, setBooks] = useState(null);
+  const books = useSelector((state) => state.books);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      setBooks(await getAllBooks());
-    };
-    fetchBooks();
-  }, []);
+    // set books on initial load
+    dispatch(setAllBooks());
+  }, [dispatch]);
 
   if (!books) {
     return <div>no Books</div>;
@@ -22,13 +20,13 @@ const BooksPage = () => {
   return (
     <>
       <div>
-        {Object.entries(books).map(([itemId, [book]]) => (
+        { books.map((book) => (
           <Book
-            key={itemId}
-            id={itemId}
+            key={book.id}
+            id={book.id}
             title={book.title}
             author="Unknown"
-            genre={book.category}
+            genre={book.genre}
             completed={Math.floor(Math.random() * 100)}
           />
         ))}
