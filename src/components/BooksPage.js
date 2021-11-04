@@ -18,7 +18,7 @@ const BooksPage = () => {
   }
 
   return (
-    <>
+    <section style={{ marginInline: '5rem' }}>
       <div>
         { books.map((book) => (
           <Book
@@ -32,7 +32,7 @@ const BooksPage = () => {
         ))}
       </div>
       <AddBook />
-    </>
+    </section>
   );
 };
 

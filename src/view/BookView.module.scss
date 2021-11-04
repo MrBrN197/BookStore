@@ -10,18 +10,19 @@
 
   .progressBox {
     display: flex;
-    background-color: rgba(royalblue, 0.2);
     align-items: center;
-    // gap: 1rem;
+    gap: 1rem;
+
     h3 {
       font-weight: unset;
+      font-size: 3rem;
     }
+
+    .loading {
+      font-size: 4.25rem;
+    }
+
   }
-
-  .updateBox {
-
-  }
-
 }
 
 

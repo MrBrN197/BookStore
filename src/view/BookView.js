@@ -21,9 +21,9 @@ const BookView = ({
       </ul>
     </div>
     <div className={styles.progressBox}>
-      <Loading className="loading-icon" style={{ fontSize: '4.25rem' }} />
+      <Loading className={styles.loading} />
       <div>
-        <h3 style={{ fontSize: '3rem' }}>
+        <h3>
           {completed}
           %
         </h3>
@@ -31,7 +31,7 @@ const BookView = ({
         <span>completed</span>
       </div>
     </div>
-    <div className={styles.updateBox}>
+    <div>
       <button type="button">update progress</button>
     </div>
   </div>
