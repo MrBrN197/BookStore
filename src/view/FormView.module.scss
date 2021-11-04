@@ -1,0 +1,27 @@
+@use '../variables' as *;
+
+.formBox {
+  h2 {
+    color: gray;
+    margin-block: 1rem;
+  }
+  
+  form {
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  input {
+    width: 50%;
+    padding-inline  : 1rem;
+    font-size: 1rem;
+  }
+  
+  button {
+    background-color: $azure;
+    width: 11.5rem;
+    color: white;
+  }
+
+}
