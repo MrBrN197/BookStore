@@ -1,12 +1,44 @@
+@use '../variables' as *;
 
 .book {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 1px solid #ddd;
-  padding: 1rem;
+  padding: 2rem 1rem;
   border-radius: 0.2rem;
+  padding-bottom: 1.75rem;
   margin-block: 1rem;
+
+  span {
+    font-size: 0.875rem;
+  }
+
+  .genre {
+    font-weight: bold;
+    color: $black-5;
+  }
+  .title {
+    font-size: 1.375rem;
+    color: #000;
+    font-weight: bold;
+    font-family: "Roboto Slab";
+    margin-top: 0.25rem;
+  }
+  .author {
+    color: $fade-blue;
+  }
+
+  ul {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    li {
+      color: $fade-blue;
+      font-size: 0.875rem;
+    }
+  }
+
 
   .progressBox {
     display: flex;

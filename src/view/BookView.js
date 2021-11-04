@@ -11,9 +11,9 @@ const BookView = ({
 }) => (
   <div className={styles.book}>
     <div>
-      <span>{genre}</span>
-      <h2>{title}</h2>
-      <span>{author}</span>
+      <span className={styles.genre}>{genre}</span>
+      <h2 className={styles.title}>{title}</h2>
+      <span className={styles.author}>{author}</span>
       <ul>
         <li><button type="button">Comments</button></li>
         <li><button type="button" onClick={onClick}>Remove</button></li>
