@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Book from './Book';
 import AddBook from './AddBook';
 import { setAllBooks } from '../redux/books/books';
+import LoadingBooks from '../view/LoadingBooks';
 
 const BooksPage = () => {
   const books = useSelector((state) => state.books);
@@ -13,8 +14,8 @@ const BooksPage = () => {
     dispatch(setAllBooks());
   }, [dispatch]);
 
-  if (!books) {
-    return <div>no Books</div>;
+  if (books.length === 0) {
+    return <LoadingBooks />;
   }
 
   return (
