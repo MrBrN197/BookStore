@@ -7,19 +7,21 @@ import FormView from '../view/FormView';
 
 const AddBook = () => {
   const [inputData, setInputData] = useState({ title: '', genre: '' });
+  const [disabled, setDisabled] = useState(false);
   const dispatch = useDispatch();
 
-  const submitBookToStore = (e) => {
+  const submitBookToStore = async (e) => {
     e.preventDefault();
-
     const { title, genre } = inputData;
-
     if (!title || !genre) return;
-    dispatch(addBook({
+
+    setDisabled(true);
+    await dispatch(addBook({
       id: uuidv4(),
       title,
       genre,
     }));
+    setDisabled(false);
 
     setInputData({
       title: '',
@@ -38,6 +40,7 @@ const AddBook = () => {
 
   return (
     <FormView
+      disabled={disabled}
       title={title}
       genre={genre}
       onSubmit={submitBookToStore}

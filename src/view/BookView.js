@@ -31,7 +31,9 @@ const BookView = ({
         <span>completed</span>
       </div>
     </div>
-    <div>
+    <div className={styles.updateBox}>
+      <span>Current Chapter</span>
+      <h3>Chapter 17</h3>
       <button type="button">update progress</button>
     </div>
   </div>

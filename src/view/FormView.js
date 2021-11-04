@@ -15,6 +15,7 @@ const options = [
 const FormView = ({
   title,
   genre,
+  disabled,
   onSubmit,
   onChange,
 }) => (
@@ -38,7 +39,7 @@ const FormView = ({
           <option key={idx} value={value}>{value}</option>
         ))}
       </select>
-      <button type="submit">ADD BOOK</button>
+      <button type="submit" disabled={disabled}>ADD BOOK</button>
     </form>
   </div>
 );
@@ -46,6 +47,7 @@ const FormView = ({
 FormView.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
 };

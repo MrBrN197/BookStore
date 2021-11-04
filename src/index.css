@@ -50,6 +50,7 @@ button {
   background-color: transparent;
   color: rgb(91, 158, 245);
   cursor: pointer;
+  font-family: inherit;
 }
 
 a {
