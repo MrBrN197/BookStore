@@ -6,12 +6,14 @@ import { addBook } from '../redux/books/books';
 import FormView from '../view/FormView';
 
 const AddBook = () => {
-  const [title, setTitle] = useState('');
-  const [genre, setGenre] = useState('');
+  const [inputData, setInputData] = useState({ title: '', genre: '' });
   const dispatch = useDispatch();
 
   const submitBookToStore = (e) => {
     e.preventDefault();
+
+    const { title, genre } = inputData;
+
     if (!title || !genre) return;
     dispatch(addBook({
       id: uuidv4(),
@@ -19,25 +21,27 @@ const AddBook = () => {
       genre,
     }));
 
-    setTitle('');
-    setGenre('');
+    setInputData({
+      title: '',
+      genre: '',
+    });
   };
 
-  // (e) => setGenre(e.target.value)
-
+  const { title, genre } = inputData;
   const handleChange = (e) => {
-    if (!e.target.name) {
-      console.log('element doesn\'t have a name attribute');
-    }
-    const [name, value] = e.target;
-    console.log('name:', name, 'value:', value);
+    const { name, value } = e.target;
+    setInputData({
+      ...inputData,
+      [name]: value,
+    });
   };
 
   return (
     <FormView
       title={title}
+      genre={genre}
       onSubmit={submitBookToStore}
-      onChange={(e) => handleChange(e.target.value)}
+      onChange={handleChange}
     />
   );
 };

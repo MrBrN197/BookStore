@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './FormView.module.scss';
 
 const options = [
@@ -11,17 +12,17 @@ const options = [
   'History',
 ].map((o, idx) => [o, idx]);
 
-/* eslint-disable react/prop-types */
 const FormView = ({
   title,
+  genre,
   onSubmit,
   onChange,
-  genre,
 }) => (
   <div className={styles.formBox}>
     <h2>ADD NEW BOOK</h2>
     <form onSubmit={onSubmit}>
       <input
+        name="title"
         value={title}
         onChange={onChange}
         type="text"
@@ -41,5 +42,12 @@ const FormView = ({
     </form>
   </div>
 );
+
+FormView.propTypes = {
+  title: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default FormView;
