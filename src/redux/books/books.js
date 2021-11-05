@@ -66,6 +66,9 @@ export const setAllBooks = () => async (dispatch) => {
       genre: book.category,
     });
   });
+
+  data.sort((a, b) => b.completed - a.completed);
+
   dispatch({
     type: SET_ALL_BOOKS,
     payload: data,
