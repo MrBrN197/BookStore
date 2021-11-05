@@ -74,6 +74,12 @@
     .loading {
       font-size: 4.25rem;
       color: $azure;
+      width: 6rem;
+      height: 6rem;
+
+      svg {
+        fill: none;
+      }
     }
   }
 

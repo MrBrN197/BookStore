@@ -1,6 +1,6 @@
-import { AiOutlineLoading3Quarters as Loading } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import styles from './BookView.module.scss';
+import LoadingCircle from '../components/LoadingCircle';
 
 const BookView = ({
   genre,
@@ -21,7 +21,7 @@ const BookView = ({
       </ul>
     </div>
     <div className={styles.progressBox}>
-      <Loading className={styles.loading} />
+      <LoadingCircle className={styles.loading} strokeWidth="10" percentage={completed} />
       <div>
         <h3>
           {completed}
