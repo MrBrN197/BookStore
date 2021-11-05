@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -7,8 +6,6 @@ const pathTransitionStyle = {
 };
 
 const Arc = ({
-  a,
-  b,
   completed,
   strokeWidth: sw,
   stroke,
@@ -27,6 +24,7 @@ const Arc = ({
 
   return (
     <path
+    /* eslint-disable-next-line react/jsx-props-no-spreading */
       {...otherProps}
       style={pathTransitionStyle}
       d={path}
@@ -38,6 +36,12 @@ const Arc = ({
       pathLength="1"
     />
   );
+};
+
+Arc.propTypes = {
+  completed: PropTypes.string.isRequired,
+  strokeWidth: PropTypes.string.isRequired,
+  stroke: PropTypes.string.isRequired,
 };
 
 const Circle = ({
@@ -57,10 +61,17 @@ const Circle = ({
       viewBox="0 0 100 100"
     >
       <Arc strokeWidth={otherProps.strokeWidth} fill="none" strokeOpacity="0.08" completed={1} />
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Arc strokeWidth={otherProps.strokeWidth} {...otherProps} completed={value} />
     </svg>
   </div>
 );
+
+Circle.propTypes = {
+  value: PropTypes.string.isRequired,
+  background: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+};
 
 const LoadingCircle = ({
   percentage: initialPercentage,
@@ -74,6 +85,7 @@ const LoadingCircle = ({
   }, [initialPercentage]);
 
   return (
+    /* eslint-disable-next-line react/jsx-props-no-spreading */
     <Circle {...otherProps} value={((percentage / 100))} />
   );
 };
