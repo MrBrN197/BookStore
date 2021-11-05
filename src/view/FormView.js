@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import styles from './FormView.module.scss';
+import Button from './Button';
 
 const options = [
   'Action',
@@ -39,7 +40,7 @@ const FormView = ({
           <option key={idx} value={value}>{value}</option>
         ))}
       </select>
-      <button type="submit" disabled={disabled}>ADD BOOK</button>
+      <Button submit loading={disabled} disabled={disabled}>ADD BOOK</Button>
     </form>
   </div>
 );
