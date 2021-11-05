@@ -14,7 +14,7 @@ const BooksPage = () => {
     dispatch(setAllBooks());
   }, [dispatch]);
 
-  if (books.length === 0) {
+  if (!books) {
     return <LoadingBooks />;
   }
 
@@ -27,8 +27,8 @@ const BooksPage = () => {
             id={book.id}
             title={book.title}
             author="Unknown"
+            completed={book.completed}
             genre={book.genre}
-            completed={Math.floor(Math.random() * 100)}
           />
         ))}
       </div>

@@ -4,7 +4,7 @@ const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
 const SET_ALL_BOOKS = 'bookStore/books/SET_ALL_BOOKS';
 
-export default (state = [], action) => {
+export default (state = null, action) => {
   switch (action.type) {
     case ADD_BOOK:
       return [
@@ -13,6 +13,7 @@ export default (state = [], action) => {
           id: action.payload.id,
           title: action.payload.title,
           genre: action.payload.genre,
+          completed: action.payload.completed,
         },
       ];
 
@@ -26,9 +27,14 @@ export default (state = [], action) => {
 };
 
 export const addBook = (payload) => async (dispatch) => {
+  const extraDetails = {
+    title: payload.title,
+    completed: payload.completed,
+  };
+
   await createBook({
     itemId: payload.id,
-    title: payload.title,
+    title: JSON.stringify(extraDetails),
     category: payload.genre,
   });
   dispatch({
@@ -47,12 +53,19 @@ export const removeBook = (payload) => async (dispatch) => {
 
 export const setAllBooks = () => async (dispatch) => {
   const books = await fetchAllBooks();
+
   // convert api data to array of objects
-  const data = Object.entries(books).map(([itemId, [book]]) => ({
-    id: itemId,
-    title: book.title,
-    genre: book.category,
-  }));
+  const data = Object.entries(books).map(([itemId, [book]]) => {
+    // sanitize book
+    const { title, completed } = JSON.parse(book.title);
+
+    return ({
+      id: itemId,
+      title,
+      completed,
+      genre: book.category,
+    });
+  });
   dispatch({
     type: SET_ALL_BOOKS,
     payload: data,

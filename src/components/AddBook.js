@@ -20,6 +20,7 @@ const AddBook = () => {
       id: uuidv4(),
       title,
       genre,
+      completed: Math.round(Math.random() * 100),
     }));
     setDisabled(false);
 
