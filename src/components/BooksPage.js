@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Book from './Book';
 import AddBook from './AddBook';
 import { setAllBooks } from '../redux/books/books';
+import LoadingBooks from '../view/LoadingBooks';
 
 const BooksPage = () => {
   const books = useSelector((state) => state.books);
@@ -14,11 +15,11 @@ const BooksPage = () => {
   }, [dispatch]);
 
   if (!books) {
-    return <div>no Books</div>;
+    return <LoadingBooks />;
   }
 
   return (
-    <>
+    <section style={{ marginInline: '5rem' }}>
       <div>
         { books.map((book) => (
           <Book
@@ -26,13 +27,13 @@ const BooksPage = () => {
             id={book.id}
             title={book.title}
             author="Unknown"
+            completed={book.completed}
             genre={book.genre}
-            completed={Math.floor(Math.random() * 100)}
           />
         ))}
       </div>
       <AddBook />
-    </>
+    </section>
   );
 };
 

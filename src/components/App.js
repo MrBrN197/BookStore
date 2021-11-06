@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
-import Header from './Header';
+import Header from '../view/Header';
 import BooksPage from './BooksPage';
 import CategoriesPage from './CategoriesPage';
 

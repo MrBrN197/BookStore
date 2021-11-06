@@ -1,7 +1,11 @@
 
+@use '../variables' as *;
+
 .header {
   display: flex;
-  color: rgb(91, 158, 245);
+
+  /* color: rgb(91, 158, 245); */
+  color: $azure;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   height: 6rem;
   justify-content: space-between;
@@ -13,23 +17,38 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  text-transform: uppercase;
 }
 
 .heading h1 {
-  display: block;
   display: inline;
 }
 
 .navbar ul {
   display: flex;
-  color: #121212;
+  color: $black;
 }
 
 .navbar li {
+  text-transform: uppercase;
   padding-inline: 0.8rem;
   font-size: 0.813rem;
   font-family: Montserrat, sans-serif;
+  letter-spacing: 0.11875em;
+
+  a {
+    border-bottom: 1px solid transparent;
+    transition: all 400ms;
+    padding: 0.1em;
+
+    &:hover {
+      background-color: rgba($azure, 0.2);
+      border-bottom: 1px solid $azure;
+    }
+
+    &.active {
+      border-bottom: 1px solid $azure;
+    }
+  }
 }
 
 .user {
