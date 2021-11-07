@@ -28,6 +28,7 @@ const AddBook = () => {
     setInputData({
       title: '',
       genre: '',
+      author: '',
     });
   };
 
@@ -39,7 +40,6 @@ const AddBook = () => {
       [name]: value,
     });
   };
-
   return (
     <FormView
       disabled={disabled}

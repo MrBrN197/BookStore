@@ -33,9 +33,9 @@ const FormView = ({
       />
       <input
         name="author"
-        type="text"
-        onChange={onChange}
         value={author}
+        onChange={onChange}
+        type="text"
         placeholder="Author"
       />
       <select
