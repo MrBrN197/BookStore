@@ -15,6 +15,7 @@ const options = [
 
 const FormView = ({
   title,
+  author,
   genre,
   disabled,
   onSubmit,
@@ -29,6 +30,13 @@ const FormView = ({
         onChange={onChange}
         type="text"
         placeholder="Book title"
+      />
+      <input
+        name="author"
+        type="text"
+        onChange={onChange}
+        value={author}
+        placeholder="Author"
       />
       <select
         name="genre"
@@ -47,6 +55,7 @@ const FormView = ({
 
 FormView.propTypes = {
   title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   disabled: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,

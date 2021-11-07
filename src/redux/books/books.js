@@ -12,6 +12,7 @@ export default (state = null, action) => {
         {
           id: action.payload.id,
           title: action.payload.title,
+          author: action.payload.author,
           genre: action.payload.genre,
           completed: action.payload.completed,
         },
@@ -30,6 +31,7 @@ export const addBook = (payload) => async (dispatch) => {
   const extraDetails = {
     title: payload.title,
     completed: payload.completed,
+    author: payload.author,
   };
 
   await createBook({
@@ -57,12 +59,13 @@ export const setAllBooks = () => async (dispatch) => {
   // convert api data to array of objects
   const data = Object.entries(books).map(([itemId, [book]]) => {
     // sanitize book
-    const { title, completed } = JSON.parse(book.title);
+    const { title, completed, author } = JSON.parse(book.title);
 
     return ({
       id: itemId,
       title,
       completed,
+      author,
       genre: book.category,
     });
   });

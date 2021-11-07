@@ -26,7 +26,7 @@ const BooksPage = () => {
             key={book.id}
             id={book.id}
             title={book.title}
-            author="Unknown"
+            author={book.author || 'N/a'}
             completed={book.completed}
             genre={book.genre}
           />

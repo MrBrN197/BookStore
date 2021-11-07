@@ -9,11 +9,12 @@
   form {
     height: 3rem;
     display: flex;
+    gap: 1rem;
     justify-content: space-between;
   }
 
   input {
-    width: 50%;
+    flex: 1;
     padding-inline: 1rem;
     font-size: 1rem;
   }
