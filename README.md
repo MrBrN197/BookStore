@@ -2,6 +2,8 @@
 
 > Book Store is a website that allows you to add, remove and view books.
 
+![preview](./preview.png)
+
 ## Built With
 
 - ReactJS
