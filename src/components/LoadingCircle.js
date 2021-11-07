@@ -9,7 +9,8 @@ const Arc = ({
   completed,
   strokeWidth: sw,
   stroke,
-  ...otherProps
+  strokeOpacity,
+  fill,
 }) => {
   const strokeWidth = sw || 4;
 
@@ -24,8 +25,8 @@ const Arc = ({
 
   return (
     <path
-    /* eslint-disable-next-line react/jsx-props-no-spreading */
-      {...otherProps}
+      fill={fill}
+      strokeOpacity={strokeOpacity}
       style={pathTransitionStyle}
       d={path}
       stroke={stroke || 'currentColor'}
@@ -38,44 +39,48 @@ const Arc = ({
   );
 };
 
+Arc.defaultProps = {
+  stroke: null,
+  fill: 'none',
+  strokeOpacity: 1,
+};
+
 Arc.propTypes = {
-  completed: PropTypes.string.isRequired,
-  strokeWidth: PropTypes.string.isRequired,
-  stroke: PropTypes.string.isRequired,
+  completed: PropTypes.number.isRequired,
+  strokeWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  stroke: PropTypes.string,
+  fill: PropTypes.string,
+  strokeOpacity: PropTypes.number,
 };
 
 const Circle = ({
   value,
-  background,
   className,
-  ...otherProps
+  strokeWidth,
 }) => (
   <div className={className}>
     <svg
       preserveAspectRatio="xMidYMid meet"
-      style={{
-        backgroundColor: background,
-      }}
       width="100%"
       height="100%"
       viewBox="0 0 100 100"
     >
-      <Arc strokeWidth={otherProps.strokeWidth} fill="none" strokeOpacity="0.08" completed={1} />
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <Arc strokeWidth={otherProps.strokeWidth} {...otherProps} completed={value} />
+      <Arc strokeWidth={strokeWidth} fill="none" strokeOpacity={0.08} completed={1} />
+      <Arc strokeWidth={strokeWidth} completed={value} />
     </svg>
   </div>
 );
 
 Circle.propTypes = {
-  value: PropTypes.string.isRequired,
-  background: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
   className: PropTypes.string.isRequired,
+  strokeWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 const LoadingCircle = ({
   percentage: initialPercentage,
-  ...otherProps
+  className,
+  strokeWidth,
 }) => {
   const [percentage, setPercentage] = useState(0);
   useEffect(() => {
@@ -85,13 +90,19 @@ const LoadingCircle = ({
   }, [initialPercentage]);
 
   return (
-    /* eslint-disable-next-line react/jsx-props-no-spreading */
-    <Circle {...otherProps} value={((percentage / 100))} />
+    <Circle className={className} strokeWidth={strokeWidth} value={((percentage / 100))} />
   );
+};
+
+LoadingCircle.defaultProps = {
+  className: '',
+  strokeWidth: 1,
 };
 
 LoadingCircle.propTypes = {
   percentage: PropTypes.number.isRequired,
+  className: PropTypes.string,
+  strokeWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default LoadingCircle;
